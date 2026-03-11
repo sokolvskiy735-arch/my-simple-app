@@ -18,7 +18,7 @@ pipeline {
            steps {
                script {
                    // Заменяем версию в HTML
-                   sh "sed -i's/BUILD_VERSION/${BUILD_NUMBER}/'index.html"
+                   sh "sed -is '/BUILD_VERSION/${BUILD_NUMBER}/'index.html"
                    
                    // Собираем образ
                    docker.build("${DOCKER_IMAGE}:${BUILD_NUMBER}")
